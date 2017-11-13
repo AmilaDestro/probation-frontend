@@ -1,0 +1,380 @@
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
+
+th {
+ text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.bikeDisplayTable {
+  display: table;
+  width: auto;
+}
+
+#bikeDisplayTableCell1 {
+  display: table-cell;
+  padding-right: 30px;
+}
+
+#bikeDisplayTableCell2 {
+  display: table-cell;
+}
+
+.buttonsMain {
+  display: table;
+  width: auto;
+}
+
+#buttonsMainCell1 {
+  display: table-cell;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+#buttonsMainCell2 {
+  display: table-cell;
+  padding-right: 10px;
+}
+
+#buttonsMainCell3 {
+  display: table-cell;
+}
+
+.listBikesAll {
+  padding-left: 20px;
+}
+
+
+#allBikesTitle {
+  font-size: 14px;
+  font-style: normal;
+  color: darkgreen;
+  font-family: "Arial Black";
+  text-align: center;
+}
+
+
+#allBikesTableHead {
+  font-size: 14px;
+  font-family: Tahoma;
+  color: darkblue;
+  background-color: #c7e6ff;
+}
+
+
+#top5BikesTitle {
+  font-size: 14px;
+  font-style: normal;
+  color: darkred;
+  font-family: "Arial Black";
+  text-align: center;
+}
+
+#deleteBikeButton {
+  color: aqua;
+  background-color: darkblue;
+  height: 30px;
+}
+
+
+.addModal {
+  font-family: "Century Gothic";
+  font-size: 15px;
+  padding-bottom: 10px;
+  color: darkblue;
+  height: auto;
+  width: auto;
+  background-color: skyblue;
+}
+
+
+#addNameLabel {
+  padding-bottom: 4px;
+}
+
+#addProductNumberLabel {
+  padding-bottom: 4px;
+}
+
+#addColorLabel {
+  padding-bottom: 4px;
+}
+
+#addPriceLabel {
+  padding-bottom: 4px;
+}
+
+#addSizeLabel {
+  padding-bottom: 4px;
+}
+
+#addWeightLabel {
+  padding-bottom: 4px;
+}
+
+#addTypeLabel {
+  padding-bottom: 4px;
+}
+
+#addBikeActions {
+  display: table-cell;
+}
+
+#actionName {
+  padding-bottom: 2px;
+}
+
+#actionProductNumber {
+  padding-bottom: 2px;
+}
+
+#actionColor {
+  padding-bottom: 2px;
+}
+
+#actionPrice {
+  padding-bottom: 2px;
+}
+
+#actionSize {
+  padding-bottom: 2px;
+}
+
+#actionWeight {
+  padding-bottom: 2px;
+}
+
+#actionType {
+  padding-bottom: 2px;
+}
+
+.addBikeButtonsTable {
+  display: table;
+  padding-top: 7px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+#applyButtonAdd {
+  display: table-cell;
+  padding-right: 15px;
+}
+
+#cancelButtonAdd {
+  display: table-cell;
+}
+
+.deleteModal {
+  font-family: "Century Gothic";
+  font-size: 14px;
+  color: darkblue;
+  height: auto;
+  width: auto;
+  background-color: skyblue;
+}
+
+.deleteModalTable {
+  display: table;
+  padding-bottom: 10px;
+}
+
+#deleteNameLabel {
+  display: table-cell;
+  padding-left: 7px;
+  padding-right: 13px;
+}
+
+#deleteInput {
+  display: table-cell;
+}
+
+.deleteModalButtons {
+  display: table;
+  padding-bottom: 15px;
+}
+
+#deleteApplyButtons {
+  display: table-cell;
+  padding-left: 7px;
+  padding-right: 15px;
+}
+
+#deleteCancelButton {
+  display: table-cell;
+}
+
+#searchForm {
+  width: 410px;
+}
+
+.newSearchTable {
+  display: table;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+
+#newSearchTableCell2 {
+  display: table-cell;
+  padding-right: 10px;
+}
+
+#newSearchTableCell3 {
+  display: table-cell;
+}
+
+.searchModal {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 500px;
+  overflow: auto;
+  width: auto;
+  background-color: skyblue;
+  font-size: 14px;
+}
+
+#searchModalCloseButton {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+}
+
+.searchSectionTable {
+  display: table;
+  padding-top: 20px;
+  font-family: "Century Gothic";
+  font-size: 14px;
+}
+
+#searchButton {
+  display: table-cell;
+}
+
+#searchButtons {
+  color: aqua;
+  font-family: "Arial";
+  font-style: normal;
+  height: 30px;
+  background-color: darkblue;
+}
+
+#searchLabel {
+  display: table-cell;
+  padding-right: 10px;
+  color: blue;
+  font-size: 12px;
+  font-style: normal;
+  font-family: "Arial Black";
+}
+
+#searchInput {
+  display: table-cell;
+  padding-right: 15px;
+}
+
+#searchResultsHead {
+  font-size: 14px;
+  font-family: "Century Gothic";
+  color: darkblue;
+  background-color: #c7e6ff;
+}
+
+
+#searchResultsBody {
+  font-family: "Agency FB";
+  font-size: 16px;
+}
+
+.search {
+  padding-top: 15px;
+  font-size: 14px;
+  font-style: italic;
+  font-family: "Arial Black";
+  color: midnightblue;
+}
+
+.foundBikesTable tr{
+  display: table;
+  table-layout: fixed;
+}
+
+.foundBikes {
+  display: block;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+#searchResultsTitle {
+  font-size: 14px;
+  font-style: normal;
+  font-family: "Arial Black";
+  color: darkblue;
+}
+
+.bikeList {
+  display: block;
+  height: 236px;
+  width: 660px;
+  overflow: hidden;
+  overflow-y: auto;
+  font-family: "Agency FB";
+  font-size: 16px;
+}
+
+.top5List {
+  height: 236px;
+  width: 660px;
+  overflow: hidden;
+  overflow-y: auto;
+  font-family: "Agency FB";
+  font-size: 16px;
+}
+
+.bikeListTitle {
+  padding-top: 10px;
+}
+
+#addingBikeText {
+  font-size: 15px;
+  font-family: "Arial Black";
+  color: darkblue;
+}
+
+#deleteBikeText {
+  font-size: 15px;
+  font-family: "Arial Black";
+  color: darkblue;
+}
+
+#editBikeText {
+  font-size: 15px;
+  font-family: "Arial Black";
+  color: darkblue;
+}
+
+.editBikeButtonsTable {
+  display: table;
+}
+
+#applyButtonEdit {
+  display: table-cell;
+  padding-right: 10px;
+}
+
+#cancelButtonEdit {
+  display: table-cell;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

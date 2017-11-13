@@ -1,0 +1,42 @@
+{
+  "name": "frontend",
+  "version": "0.1.1",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.16.2",
+    "react": "^15.6.2",
+    "react-bootstrap": "^0.31.3",
+    "react-dom": "^15.6.2",
+    "react-modal-bootstrap": "^1.1.1",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.14",
+    "redux": "^3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "Frontend part of BikesApplication",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "C:\\Users\\liudmyla.azarenko\\liudmyla.azarenko.git"
+  },
+  "keywords": [
+    "bikes",
+    "search",
+    "add",
+    "delete",
+    "top5"
+  ],
+  "author": "Liudmyla Azarenko",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "react": "^15.4.2",
+    "redux-devtools": "^3.4.0"
+  }
+}
