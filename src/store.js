@@ -3,12 +3,19 @@ import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
 
 import bikesReducers from './components/reducers/addBike';
+import removableBikesReducers from './components/reducers/deleteBike';
+import deleteBikeMiddleWare from "./components/middleware/deleteBike";
 
-const middleware = [thunk, createLogger()];
+const middleware = [
+    thunk,
+    deleteBikeMiddleWare,
+    createLogger()];
 
 const store = createStore(
     combineReducers({
-        bikesReducers
+        bikesReducers: bikesReducers,
+        removableBikesReducers: removableBikesReducers
+
     })
     , applyMiddleware(...middleware));
 

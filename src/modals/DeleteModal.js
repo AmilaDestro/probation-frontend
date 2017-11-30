@@ -1,76 +1,45 @@
 import React, { Component } from 'react';
-import {deleteBikeRequest} from "../api/bikes";
 import {Button, FormControl, Modal} from "react-bootstrap";
+import {bikeDeleted} from "../components/actions/deleteBike";
+import {connect} from "react-redux";
 
 
 class DeleteModal extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            modalIsOpen: false,
-            productIdValue: '',
-            success: ''
+            modalIsOpen: false
         };
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.bikeNameInputHandle = this.bikeNameInputHandle.bind(this);
-        this.deleteBike = this.deleteBike.bind(this);
     }
 
+    componentWillReceiveProps(someProps) {
+        this.setState({
+            bikeDeleted: someProps
+        })
+    }
 
     componentDidMount() {
-        this.deleteBike();
+        this.props.bikeDeleted;
     }
 
 
     openModal() {
         this.setState({modalIsOpen: true});
-        this.setState({
-            productIdValue: '',
-            success: ''
-        });
     }
 
 
     closeModal() {
         this.setState({modalIsOpen: false});
-        this.setState({
-            productIdValue: '',
-            success: ''
-        });
     }
 
 
     bikeNameInputHandle(event) {
-        this.setState({productIdValue: event.target.value})
+        bike.productId = event.target.value;
     }
-
-
-    deleteBike() {
-        const bike = {
-            productId: this.state.productIdValue
-        }
-        console.log(bike.productId);
-        if (bike.productId == '') {
-            this.setState({
-                success: 'ID of bike was not specified'
-            });
-        } else {
-            deleteBikeRequest(bike.productId)
-                .then((success) => {
-                if (success == 1) {
-                    alert("SUCCESS: record deleted");
-                } else {
-                    alert("ERROR: record not found");
-                }
-                    return this.state.success
-                }).catch((error) => {
-                console.error(error);
-            });
-        }
-    }
-
 
     render() {
         return (
@@ -91,10 +60,9 @@ class DeleteModal extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="deleteModalButtons">
-                            <div id="deleteApplyButtons"><Button bsStyle="primary" onClick={this.deleteBike} >Apply</Button></div>
+                            <div id="deleteApplyButtons"><Button bsStyle="primary" onClick={this.props.bikeDeleted} >Apply</Button></div>
                             <div id="deleteCancelButton"><Button bsStyle="secondary" onClick={this.closeModal}>Cancel</Button></div>
                         </div>
-                        <div id="deleteSuccess">{this.state.success}</div>
                     </Modal.Footer>
                 </Modal>
             </div>
@@ -102,4 +70,23 @@ class DeleteModal extends Component {
     }
 }
 
-export default DeleteModal;
+
+const bike = {
+    productId: 0
+}
+
+const mapStateToProps = (state) => {
+    debugger;
+    return {
+        productId: state.removableBikesReducers.productId
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    debugger;
+    return {
+        bikeDeleted: () => dispatch(bikeDeleted(bike.productId))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (DeleteModal)

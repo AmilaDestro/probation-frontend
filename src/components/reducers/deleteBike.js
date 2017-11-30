@@ -1,23 +1,16 @@
 import * as types from "../actions/ActionTypes";
 
 const initialState = {
-    bike: {
-        name: '',
-        productNumber: '',
-        color: '',
-        price: 0.0,
-        size: 0,
-        weight: 0.0,
-        type: 1
-    }
+    productId: 0
 };
 
-function bikesReducers(state = initialState, action) {
+function removableBikesReducers(state = initialState, action) {
+    console.log(action);
     switch (action.type) {
-        case types.ADD_NEW_BIKE: {
+        case types.DELETE_BIKE: {
             debugger;
             return updateObject(state, {
-                bike: action.bike,
+                productId: action.productId
             });
         }
         default:
@@ -29,4 +22,4 @@ function updateObject(obj, newProperties) {
     return Object.assign({}, obj, newProperties);
 }
 
-export default bikesReducers;
+export default removableBikesReducers;

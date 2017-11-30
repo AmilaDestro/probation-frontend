@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a525877f-640d-4a1a-8d8b-a6f7ef048998" name="Default" comment="" />
+    <list default="true" id="a525877f-640d-4a1a-8d8b-a6f7ef048998" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/bikes.js" afterPath="$PROJECT_DIR$/src/api/bikes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/actions/ActionTypes.js" afterPath="$PROJECT_DIR$/src/components/actions/ActionTypes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/reducers/addBike.js" afterPath="$PROJECT_DIR$/src/components/reducers/addBike.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modals/DeleteModal.js" afterPath="$PROJECT_DIR$/src/modals/DeleteModal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modals/EditModal.js" afterPath="$PROJECT_DIR$/src/modals/EditModal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store.js" afterPath="$PROJECT_DIR$/src/store.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/modals/SearchModal2.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+              <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <marker date="1510153560538" expanded="true" signature="2108:2155" ph="&lt;Button/&gt;" />
@@ -86,9 +94,13 @@
       <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
+            <state relative-caret-position="5814">
               <caret line="342" column="20" lean-forward="false" selection-start-line="342" selection-start-column="20" selection-end-line="342" selection-end-column="20" />
-              <folding />
+              <folding>
+                <marker date="1511194904999" expanded="true" signature="4855:4926" ph="{...}" />
+                <marker date="1511194904999" expanded="true" signature="4990:5039" ph="{...}" />
+                <marker date="1511194904999" expanded="true" signature="5059:5085" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,11 +108,11 @@
       <file leaf-file-name="EditModal.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modals/EditModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2176">
-              <caret line="130" column="58" lean-forward="false" selection-start-line="130" selection-start-column="46" selection-end-line="130" selection-end-column="58" />
+            <state relative-caret-position="3009">
+              <caret line="179" column="58" lean-forward="false" selection-start-line="179" selection-start-column="58" selection-end-line="179" selection-end-column="58" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1509018620759" expanded="true" signature="4146:4191" ph="&lt;div/&gt;" />
+                <marker date="1511258889305" expanded="true" signature="8810:9398" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -109,8 +121,8 @@
       <file leaf-file-name="DeleteModal.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modals/DeleteModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="69" column="15" lean-forward="false" selection-start-line="60" selection-start-column="16" selection-end-line="69" selection-end-column="15" />
+            <state relative-caret-position="731">
+              <caret line="44" column="14" lean-forward="false" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -120,7 +132,7 @@
         <entry file="file://$PROJECT_DIR$/src/api/bikes.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="60" lean-forward="true" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+              <caret line="8" column="60" lean-forward="false" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -169,6 +181,9 @@
       <find>bikeList</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
@@ -207,9 +222,6 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="400" />
     <option name="width" value="840" />
@@ -230,34 +242,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="probation-frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="probation-frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="probation-frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="probation-frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="probation-frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="probation-frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="modals" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -265,14 +267,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BikesApplication510/BikesApplication" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
@@ -404,15 +405,15 @@
       <workItem from="1509118203352" duration="376000" />
       <workItem from="1509352991838" duration="3382000" />
       <workItem from="1510153093131" duration="935000" />
+      <workItem from="1512038414027" duration="166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115424000" />
+    <option name="totallyTimeSpent" value="115590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -422,8 +423,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26843318" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26843318" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26222494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -747,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modals/DeleteModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="69" column="15" lean-forward="false" selection-start-line="60" selection-start-column="16" selection-end-line="69" selection-end-column="15" />
+        <state relative-caret-position="731">
+          <caret line="44" column="14" lean-forward="false" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -775,11 +776,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modals/EditModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2176">
-          <caret line="130" column="58" lean-forward="false" selection-start-line="130" selection-start-column="46" selection-end-line="130" selection-end-column="58" />
+        <state relative-caret-position="3009">
+          <caret line="179" column="58" lean-forward="false" selection-start-line="179" selection-start-column="58" selection-end-line="179" selection-end-column="58" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1509018620759" expanded="true" signature="4146:4191" ph="&lt;div/&gt;" />
+            <marker date="1511258889305" expanded="true" signature="8810:9398" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -807,16 +808,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
+        <state relative-caret-position="5814">
           <caret line="342" column="20" lean-forward="false" selection-start-line="342" selection-start-column="20" selection-end-line="342" selection-end-column="20" />
-          <folding />
+          <folding>
+            <marker date="1511194904999" expanded="true" signature="4855:4926" ph="{...}" />
+            <marker date="1511194904999" expanded="true" signature="4990:5039" ph="{...}" />
+            <marker date="1511194904999" expanded="true" signature="5059:5085" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/bikes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="60" lean-forward="true" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+          <caret line="8" column="60" lean-forward="false" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -824,7 +829,7 @@
     <entry file="file://$PROJECT_DIR$/src/modals/SearchModal2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <marker date="1510153560538" expanded="true" signature="2108:2155" ph="&lt;Button/&gt;" />

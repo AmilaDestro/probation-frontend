@@ -7,6 +7,7 @@ const ADD_NEW_BIKE = "http://localhost:8081/api/bikes/";
 const DELETE_BIKE = "http://localhost:8081/api/bikes/";
 const SEARCH_BIKE = "http://localhost:8081/api/bikes/";
 const EDIT_BIKE = "http://localhost:8081/api/bikes/update/";
+const GET_BIKE_BY_ID = "http://localhost:8081/api/bikes/";
 
 
 export const loadAllBikesRequest = () => {
@@ -77,6 +78,18 @@ export const searchBikeRequest = (keyword) => {
         }
     })
 
+        .then(function (response) {
+            console.log(response.data);
+            return response.data;
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+};
+
+export const getBikeByIdRequest = (productId) => {
+    return axios.get(GET_BIKE_BY_ID.concat(productId))
         .then(function (response) {
             console.log(response.data);
             return response.data;

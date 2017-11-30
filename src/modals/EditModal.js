@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, FormControl, Modal} from "react-bootstrap";
-import {editBikeRequest} from "../api/bikes";
+import {editBikeRequest, getBikeByIdRequest} from "../api/bikes";
+
 
 class EditModal extends Component {
     constructor(props) {
@@ -10,11 +11,19 @@ class EditModal extends Component {
             nameValue: '',
             productNumberValue: '',
             colorValue: '',
-            priceValue: 0.0,
-            sizeValue: 0,
-            weightValue: 0.0,
-            typeValue: 0,
-            productIdValue: 0
+            priceValue: '',
+            sizeValue: '',
+            weightValue: '',
+            typeValue: 1,
+            productIdValue: 0,
+
+            previousName: '',
+            previousProductNumber: '',
+            previousColor: '',
+            previousPrice: '',
+            previousSize: '',
+            previousWeight: '',
+            previousType: ''
         };
 
         this.openModal = this.openModal.bind(this);
@@ -28,6 +37,7 @@ class EditModal extends Component {
         this.typeSelectHandler = this.typeSelectHandler.bind(this);
         this.productIdInputHandle = this.productIdInputHandle.bind(this);
         this.editBike = this.editBike.bind(this);
+        this.getBikesOldProps = this.getBikesOldProps.bind(this);
     }
 
     componentDidMount() {
@@ -40,7 +50,24 @@ class EditModal extends Component {
 
 
     closeModal() {
-        this.setState({modalIsOpen: false});
+        this.setState({
+            modalIsOpen: false,
+            nameValue: '',
+            productNumberValue: '',
+            colorValue: '',
+            priceValue: '',
+            sizeValue: '',
+            weightValue: '',
+            typeValue: 1,
+            productIdValue: 0,
+            previousName: '',
+            previousProductNumber: '',
+            previousColor: '',
+            previousPrice: '',
+            previousSize: '',
+            previousWeight: '',
+            previousType: ''
+        });
     }
 
     nameInputHandle() {
@@ -89,7 +116,29 @@ class EditModal extends Component {
     productIdInputHandle() {
         this.setState({
             productIdValue: document.getElementById("productId").value
-        })
+        });
+        console.log("typed " + document.getElementById("productId").value);
+        this.getBikesOldProps();
+    }
+
+    getBikesOldProps() {
+        let enteredId = document.getElementById("productId").value;
+        if (enteredId >= 749) {
+            getBikeByIdRequest(enteredId)
+                .then((response) => {
+                    if (response != null) {
+                        this.setState({
+                            previousName: response.name,
+                            previousProductNumber: response.productNumber,
+                            previousColor: response.color,
+                            previousPrice: response.price,
+                            previousSize: response.size,
+                            previousWeight: response.weight,
+                            previousType: response.type
+                        });
+                    }
+                });
+        }
     }
 
     editBike() {
@@ -107,7 +156,7 @@ class EditModal extends Component {
         if (this.state.productIdValue !== 0) {
             editBikeRequest(bike)
                 .then((success) => {
-                    if (success == 1) {
+                    if (success === 1) {
                         alert("SUCCESS: record updated");
                     } else {
                         alert("ERROR: record update failed");
@@ -132,45 +181,46 @@ class EditModal extends Component {
                         <Modal.Body>
                             <div className="editIDTable">
                                 <div id="editNameLabel">ID</div>
-                                <div id="editActionID"><FormControl type="text" size="50" id="productId" onChange={this.productIdInputHandle}/></div>
+                                <div id="editActionID"><FormControl type="text" size="50" id="productId" onChange={this.productIdInputHandle} /></div>
                             </div>
                             <div className="editBikeNameTable">
                                 <div id="editNameLabel">Name</div>
-                                <div id="editActionName"><FormControl type="text" size="50" id="bikeName" onChange={this.nameInputHandle}/></div>
+                                <div id="editActionName"><FormControl type="text" size="50" id="bikeName" placeholder = {this.state.previousName} onChange={this.nameInputHandle}/></div>
                             </div>
                             <div className="editBikeProductNumberTable">
                                 <div id="editProductNumberLabel">Product number</div>
-                                <div id="editActionProductNumber"><FormControl type="text" id="ProductNumber"
+                                <div id="editActionProductNumber"><FormControl type="text" id="ProductNumber" placeholder = {this.state.previousProductNumber}
                                                                            onChange={this.productNumberInputHandle}/></div>
                             </div>
                             <div className="editBikeColorTable">
                                 <div id="editColorLabel">Color</div>
-                                <div id="editActionColor"><FormControl type="text" id="color" onChange={this.colorInputHandle}/></div>
+                                <div id="editActionColor"><FormControl type="text" id="color" placeholder = {this.state.previousColor} onChange={this.colorInputHandle}/></div>
                             </div>
                             <div className="editBikePriceTable">
                                 <div id="editPriceLabel">Price</div>
-                                <div id="editActionPrice"><FormControl type="text" id="price" onChange={this.priceInputHandle}/></div>
+                                <div id="editActionPrice"><FormControl type="text" id="price"  placeholder = {this.state.previousPrice} onChange={this.priceInputHandle}/></div>
                             </div>
                             <div className="editBikeSizeTable">
                                 <div id="editSizeLabel">Size</div>
-                                <div id="editActionSize"><FormControl type="text" id="size" onChange={this.sizeInputHandle}/></div>
+                                <div id="editActionSize"><FormControl type="text" id="size" placeholder = {this.state.previousSize} onChange={this.sizeInputHandle}/></div>
                             </div>
                             <div className="editBikeWeightTable">
                                 <div id="editWeightLabel">Weight</div>
-                                <div id="editActionWeight"><FormControl type="text" id="weight" onChange={this.weightInputHandle}/></div>
+                                <div id="editActionWeight"><FormControl type="text" id="weight" placeholder = {this.state.previousWeight} onChange={this.weightInputHandle}/></div>
                             </div>
-                            <div className="editBikeTypeTable">
-                                <div id="editTypeLabel">Type</div>
-                                <div id="editActionType">
+                            <div>
+                                <div>Type</div>
+                                <div>
 
                                     <select name="bikeType" id="typeId" onChange={this.typeSelectHandler}>
-                                        <option value="1" title="Mountain Bikes">1</option>
+                                        <option value="1" title="Mountain Bikes" defaultValue="1">1</option>
                                         <option value="2" title="Road Bikes">2</option>
                                         <option value="3" title="Touring Bikes">3</option>
                                     </select>
 
                                 </div>
                             </div>
+                            <div>Current type: {this.state.previousType}</div>
                         </Modal.Body>
                         <Modal.Footer>
                             <div className="editBikeButtonsTable">
