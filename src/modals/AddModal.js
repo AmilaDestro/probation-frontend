@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {addNewBike} from "../components/actions/addBike";
+import {bikeAdded} from "../components/actions/addBike";
 import {connect} from "react-redux";
 import {bikesReducers} from "../components/reducers/addBike";
 import {Button, FormControl, Modal} from "react-bootstrap";
@@ -26,13 +26,13 @@ class AddModal extends Component {
 
     componentWillReceiveProps(someProps) {
         this.setState({
-            addNewBike: someProps
+            bikeAdded: someProps
         })
     }
 
 
     componentDidMount() {
-        this.props.addNewBike;
+        this.props.bikeAdded;
     }
 
 
@@ -133,7 +133,7 @@ class AddModal extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="addBikeButtonsTable">
-                            <div id="applyButtonAdd"><Button bsStyle="primary" onClick={this.props.addNewBike}>Apply</Button></div>
+                            <div id="applyButtonAdd"><Button bsStyle="primary" onClick={this.props.bikeAdded}>Apply</Button></div>
                             <div id="cancelButtonAdd"><Button bsStyle="secondary" onClick={this.closeModal}>Cancel</Button></div>
                         </div>
                     </Modal.Footer>
@@ -151,11 +151,11 @@ const bike = {
     price: undefined,
     size: undefined,
     weight: undefined,
-    type: undefined
+    type: 1
 };
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     debugger;
     return {
         bike : state.bikesReducers.bike
@@ -163,10 +163,10 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     debugger;
     return {
-        addNewBike: () => dispatch(addNewBike(bike))
+        bikeAdded: () => dispatch(bikeAdded(bike))
     }
 };
 
