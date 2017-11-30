@@ -1,5 +1,7 @@
 import * as types from '../actions/ActionTypes';
-import {deleteBikeRequest} from "../../api/bikes";
+import {deleteBikeRequest, loadAllBikesRequest, loadTop5BikesRequest} from "../../api/bikes";
+import {allBikesLoaded} from "../actions/loadBikeList";
+import {top5Loaded} from "../actions/loadTop5";
 
 function deleteBikeMiddleWare({getState}) {
     return next => action => {
@@ -16,6 +18,10 @@ function deleteBikeMiddleWare({getState}) {
                                 }
                             }
                         )
+                        .then(() => loadAllBikesRequest())
+                        .then(response => next(allBikesLoaded(response)))
+                        .then(() => loadTop5BikesRequest())
+                        .then(response => next(top5Loaded(response)))
                         .catch(e => console.error(e));
                 } else {
                     alert("WARNING: ID cannot be empty");

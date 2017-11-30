@@ -1,5 +1,7 @@
 import * as types from '../actions/ActionTypes';
-import {createBikeRequest} from "../../api/bikes";
+import {createBikeRequest, loadAllBikesRequest} from "../../api/bikes";
+import {allBikesLoaded} from "../actions/loadBikeList";
+
 
 function addBikeMiddleWare({getState}) {
     return next => action => {
@@ -13,6 +15,8 @@ function addBikeMiddleWare({getState}) {
                             alert("ERROR: attempt to send empty data or record already exists")
                         }
                     })
+                    .then(() => loadAllBikesRequest())
+                    .then(response => next(allBikesLoaded(response)))
                     .catch(e => console.log(e))
             }
             default:
