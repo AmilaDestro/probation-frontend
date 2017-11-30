@@ -5,3 +5,7 @@ export const DELETE_BIKE = 'DELETE_BIKE';
 export const LOAD_ALL_BIKES = 'LOAD_ALL_BIKES';
 
 export const BIKELIST_LOADED = 'BIKELIST_LOADED';
+
+export const LOAD_TOP_5 = 'LOAD_TOP_5';
+
+export const TOP_5_LOADED = 'TOP_5_LOADED';

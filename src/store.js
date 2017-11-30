@@ -8,10 +8,13 @@ import deleteBikeMiddleWare from "./components/middleware/deleteBike";
 import addBikeMiddleWare from "./components/middleware/addBike";
 import bikeListReducer from "./components/reducers/loadBikeList";
 import loadBikeListMiddleWare from "./components/middleware/loadBikeList";
+import loadTop5MiddleWare from "./components/middleware/loadTop5";
+import top5Reducer from "./components/reducers/loadTop5";
 
 const middleware = [
     thunk,
     loadBikeListMiddleWare,
+    loadTop5MiddleWare,
     addBikeMiddleWare,
     deleteBikeMiddleWare,
     createLogger()];
@@ -19,6 +22,7 @@ const middleware = [
 const store = createStore(
     combineReducers({
         bikeListReducer: bikeListReducer,
+        top5Reducer: top5Reducer,
         bikesReducers: bikesReducers,
         removableBikesReducers: removableBikesReducers
 

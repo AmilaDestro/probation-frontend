@@ -2,47 +2,33 @@ import React, { Component } from 'react';
 import './App.css';
 import BikeList from "./components/BikeList";
 import Top5 from "./components/Top5";
-import {loadTop5BikesRequest} from "./api/bikes";
 import AddModal from "./modals/AddModal";
 import DeleteModal from "./modals/DeleteModal";
 import SearchModal2 from "./modals/SearchModal2";
 import EditModal from "./modals/EditModal";
 import {loadAllBikes} from "./components/actions/loadBikeList";
 import {connect} from "react-redux";
+import {loadTop5Sales} from "./components/actions/loadTop5";
 
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            bikes: [],
-            bestBikes: [],
-        };
-
-        this.loadTop5 = this.loadTop5.bind(this);
+        this.state = {};
     }
 
-    componentWillReceiveProps(someProps) {
+    componentWillReceiveProps(someProps, nextProps) {
         this.setState({
-            loadAllBikes: someProps
+            loadAllBikes: someProps,
+            loadTop5Sales: nextProps
         })
     }
 
     componentDidMount() {
-        this.loadTop5();
         this.props.loadAllBikes();
+        this.props.loadTop5Sales();
     }
 
-    loadTop5() {
-        loadTop5BikesRequest().then((bestBikes) => {
-            this.setState({
-                bestBikes: bestBikes
-            });
-            return this.state.bestBikes;
-        }).catch((error) => {
-            console.error(error);
-        });
-    }
 
   render() {
     return (
@@ -52,7 +38,7 @@ class App extends Component {
             </div>
             <div className="bikeDisplayTable">
                 <div id="bikeDisplayTableCell1"><BikeList bikes={this.props.bikes}/></div>
-                <div id="bikeDisplayTableCell2"><Top5 items={this.state.bestBikes} className="top5Block"/></div>
+                <div id="bikeDisplayTableCell2"><Top5 items={this.props.topSales} className="top5Block"/></div>
             </div>
             <div className="buttonsMain">
                 <div id="buttonsMainCell1"><AddModal/></div>
@@ -65,17 +51,17 @@ class App extends Component {
   }
 }
 
-// export default App;
-
 const mapStateToProps = (state) => {
     return {
-        bikes: state.bikeListReducer.bikes
+        bikes: state.bikeListReducer.bikes,
+        topSales: state.top5Reducer.topSales
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
    return {
-       loadAllBikes: () => dispatch(loadAllBikes())
+       loadAllBikes: () => dispatch(loadAllBikes()),
+       loadTop5Sales: () => dispatch(loadTop5Sales())
    };
 };
 
