@@ -1,29 +1,14 @@
 import React, {Component} from 'react';
 import {Button, FormControl, Modal} from "react-bootstrap";
-import {editBikeRequest, getBikeByIdRequest} from "../api/bikes";
+import {connect} from "react-redux";
+import {editBike, getBikesOldProps} from "../components/actions/editBike";
 
 
 class EditModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalIsOpen: false,
-            nameValue: '',
-            productNumberValue: '',
-            colorValue: '',
-            priceValue: '',
-            sizeValue: '',
-            weightValue: '',
-            typeValue: 1,
-            productIdValue: 0,
-
-            previousName: '',
-            previousProductNumber: '',
-            previousColor: '',
-            previousPrice: '',
-            previousSize: '',
-            previousWeight: '',
-            previousType: ''
+            modalIsOpen: false
         };
 
         this.openModal = this.openModal.bind(this);
@@ -36,12 +21,18 @@ class EditModal extends Component {
         this.weightInputHandle = this.weightInputHandle.bind(this);
         this.typeSelectHandler = this.typeSelectHandler.bind(this);
         this.productIdInputHandle = this.productIdInputHandle.bind(this);
-        this.editBike = this.editBike.bind(this);
-        this.getBikesOldProps = this.getBikesOldProps.bind(this);
+    }
+
+    componentWillReceiveProps(someProps, nextProps) {
+        this.setState({
+           getBikesOldProps: someProps,
+           editBike: nextProps
+        });
     }
 
     componentDidMount() {
-        this.editBike();
+        // this.props.getBikesOldProps;
+        this.props.editBike;
     }
 
     openModal() {
@@ -51,121 +42,42 @@ class EditModal extends Component {
 
     closeModal() {
         this.setState({
-            modalIsOpen: false,
-            nameValue: '',
-            productNumberValue: '',
-            colorValue: '',
-            priceValue: '',
-            sizeValue: '',
-            weightValue: '',
-            typeValue: 1,
-            productIdValue: 0,
-            previousName: '',
-            previousProductNumber: '',
-            previousColor: '',
-            previousPrice: '',
-            previousSize: '',
-            previousWeight: '',
-            previousType: ''
+            modalIsOpen: false
         });
+        bike.productId = 0;
     }
 
     nameInputHandle() {
-        this.setState({
-            nameValue: document.getElementById("bikeName").value
-        })
+        bike.name = document.getElementById("bikeName").value;
     }
 
     productNumberInputHandle() {
-        this.setState({
-            productNumberValue: document.getElementById("ProductNumber").value
-        })
-
+        bike.productNumber = document.getElementById("ProductNumber").value;
     }
 
     colorInputHandle() {
-        this.setState({
-            colorValue: document.getElementById("color").value
-        })
+        bike.color = document.getElementById("color").value;
     }
 
     priceInputHandle() {
-        this.setState({
-            priceValue: document.getElementById("price").value
-        })
+        bike.price = document.getElementById("price").value;
     }
 
     sizeInputHandle() {
-        this.setState({
-            sizeValue: document.getElementById("size").value
-        })
+        bike.size = document.getElementById("size").value;
     }
 
     weightInputHandle() {
-        this.setState({
-            weightValue: document.getElementById("weight").value
-        })
+        bike.weight = document.getElementById("weight").value;
     }
 
     typeSelectHandler() {
-        this.setState({
-            typeValue: document.getElementById("typeId").value
-        })
+        bike.type = document.getElementById("typeId").value;
     }
 
     productIdInputHandle() {
-        this.setState({
-            productIdValue: document.getElementById("productId").value
-        });
-        console.log("typed " + document.getElementById("productId").value);
-        this.getBikesOldProps();
-    }
-
-    getBikesOldProps() {
-        let enteredId = document.getElementById("productId").value;
-        if (enteredId >= 749) {
-            getBikeByIdRequest(enteredId)
-                .then((response) => {
-                    if (response != null) {
-                        this.setState({
-                            previousName: response.name,
-                            previousProductNumber: response.productNumber,
-                            previousColor: response.color,
-                            previousPrice: response.price,
-                            previousSize: response.size,
-                            previousWeight: response.weight,
-                            previousType: response.type
-                        });
-                    }
-                });
-        }
-    }
-
-    editBike() {
-        const bike = {
-            productId: this.state.productIdValue,
-            name: this.state.nameValue,
-            productNumber: this.state.productNumberValue,
-            color: this.state.colorValue,
-            price: this.state.priceValue,
-            size: this.state.sizeValue,
-            weight: this.state.weightValue,
-            type: this.state.typeValue
-        }
-        console.log(bike);
-        if (this.state.productIdValue !== 0) {
-            editBikeRequest(bike)
-                .then((success) => {
-                    if (success === 1) {
-                        alert("SUCCESS: record updated");
-                    } else {
-                        alert("ERROR: record update failed");
-                    }
-                    return this.state.success
-                }).catch((error) => {
-                console.error(error);
-            });
-        }
+        bike.productId = document.getElementById("productId").value;
+        this.props.getBikesOldProps(bike.productId);
     }
 
     render() {
@@ -185,28 +97,28 @@ class EditModal extends Component {
                             </div>
                             <div className="editBikeNameTable">
                                 <div id="editNameLabel">Name</div>
-                                <div id="editActionName"><FormControl type="text" size="50" id="bikeName" placeholder = {this.state.previousName} onChange={this.nameInputHandle}/></div>
+                                <div id="editActionName"><FormControl type="text" size="50" id="bikeName" placeholder = {this.props.notUpdatedBike.name} onChange={this.nameInputHandle}/></div>
                             </div>
                             <div className="editBikeProductNumberTable">
                                 <div id="editProductNumberLabel">Product number</div>
-                                <div id="editActionProductNumber"><FormControl type="text" id="ProductNumber" placeholder = {this.state.previousProductNumber}
+                                <div id="editActionProductNumber"><FormControl type="text" id="ProductNumber" placeholder = {this.props.notUpdatedBike.productNumber}
                                                                            onChange={this.productNumberInputHandle}/></div>
                             </div>
                             <div className="editBikeColorTable">
                                 <div id="editColorLabel">Color</div>
-                                <div id="editActionColor"><FormControl type="text" id="color" placeholder = {this.state.previousColor} onChange={this.colorInputHandle}/></div>
+                                <div id="editActionColor"><FormControl type="text" id="color" placeholder = {this.props.notUpdatedBike.color} onChange={this.colorInputHandle}/></div>
                             </div>
                             <div className="editBikePriceTable">
                                 <div id="editPriceLabel">Price</div>
-                                <div id="editActionPrice"><FormControl type="text" id="price"  placeholder = {this.state.previousPrice} onChange={this.priceInputHandle}/></div>
+                                <div id="editActionPrice"><FormControl type="text" id="price"  placeholder = {this.props.notUpdatedBike.price} onChange={this.priceInputHandle}/></div>
                             </div>
                             <div className="editBikeSizeTable">
                                 <div id="editSizeLabel">Size</div>
-                                <div id="editActionSize"><FormControl type="text" id="size" placeholder = {this.state.previousSize} onChange={this.sizeInputHandle}/></div>
+                                <div id="editActionSize"><FormControl type="text" id="size" placeholder = {this.props.notUpdatedBike.size} onChange={this.sizeInputHandle}/></div>
                             </div>
                             <div className="editBikeWeightTable">
                                 <div id="editWeightLabel">Weight</div>
-                                <div id="editActionWeight"><FormControl type="text" id="weight" placeholder = {this.state.previousWeight} onChange={this.weightInputHandle}/></div>
+                                <div id="editActionWeight"><FormControl type="text" id="weight" placeholder = {this.props.notUpdatedBike.weight} onChange={this.weightInputHandle}/></div>
                             </div>
                             <div>
                                 <div>Type</div>
@@ -220,11 +132,11 @@ class EditModal extends Component {
 
                                 </div>
                             </div>
-                            <div>Current type: {this.state.previousType}</div>
+                            <div>Previously set type: {this.props.notUpdatedBike.type}</div>
                         </Modal.Body>
                         <Modal.Footer>
                             <div className="editBikeButtonsTable">
-                                <div id="applyButtonEdit"><Button bsStyle="primary" onClick={this.editBike}>Apply</Button></div>
+                                <div id="applyButtonEdit"><Button bsStyle="primary" onClick={this.props.editBike}>Apply</Button></div>
                                 <div id="cancelButtonEdit"><Button bsStyle="secondary" onClick={this.closeModal}>Cancel</Button></div>
                             </div>
                         </Modal.Footer>
@@ -235,4 +147,30 @@ class EditModal extends Component {
     }
 }
 
-export default EditModal;
+const bike = {
+    name: '',
+    productNumber: '',
+    color: '',
+    price: '',
+    size: '',
+    weight: '',
+    type: 1,
+    productId: 0
+};
+
+const mapStateToProps = (state) => {
+  return {
+      productId: state.editBikeReducer.productId,
+      notUpdatedBike: state.editBikeReducer.notUpdatedBike,
+      bike: state.editBikeReducer.bike,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getBikesOldProps: () => dispatch(getBikesOldProps(bike.productId)),
+      editBike: () => dispatch(editBike(bike))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (EditModal)
