@@ -4,7 +4,7 @@ import BikeList from "./components/BikeList";
 import Top5 from "./components/Top5";
 import AddModal from "./modals/AddModal";
 import DeleteModal from "./modals/DeleteModal";
-import SearchModal2 from "./modals/SearchModal2";
+import SearchModal from "./modals/SearchModal";
 import EditModal from "./modals/EditModal";
 import {loadAllBikes} from "./components/actions/loadBikeList";
 import {connect} from "react-redux";
@@ -34,7 +34,7 @@ class App extends Component {
     return (
         <div>
             <div>
-                <SearchModal2/>
+                <SearchModal/>
             </div>
             <div className="bikeDisplayTable">
                 <div id="bikeDisplayTableCell1"><BikeList bikes={this.props.bikes}/></div>

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import {searchBikeRequest} from "../api/bikes";
+import React, {Component} from 'react';
 import {Button, Form, FormControl, FormGroup, Modal, Table} from "react-bootstrap";
+import {bikeSearch} from "../components/actions/searchBike";
+import {connect} from "react-redux";
 
 
 class SearchModal extends Component {
@@ -8,26 +9,26 @@ class SearchModal extends Component {
         super();
         this.state = {
             showModal: false,
-            value: '',
-            newItems: []
+            value: ''
         };
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
         this.whileInputHandle = this.whileInputHandle.bind(this);
-        this.searchInit = this.searchInit.bind(this);
+    }
+
+    componentWillReceiveProps(someProps, nextProps) {
+        this.setState({
+            bikeSearch: someProps,
+            bikeFound: nextProps
+        })
     }
 
     componentDidMount() {
-        this.searchInit();
-    }
-
-
-    componentWillReceiveProps() {
-        this.searchInit();
+        this.props.bikeSearch
     }
 
     open() {
-        this.searchInit();
+        this.props.bikeSearch();
         this.setState({
             showModal: true
         });
@@ -44,21 +45,7 @@ class SearchModal extends Component {
         this.setState({
             value: event.target.value
         });
-    }
-
-
-    searchInit() {
-        console.log("Search initiated by " + this.state.value);
-        if (this.state.value != '') {
-            searchBikeRequest(this.state.value).then((response) => {
-                this.setState({
-                    newItems: response
-                });
-                return this.state.newItems;
-            }).catch((error) => {
-                console.error(error);
-            });
-        }
+        gatheredData.keyword = event.target.value
     }
 
     render() {
@@ -79,7 +66,7 @@ class SearchModal extends Component {
                                         <Modal.Title><div id="searchResultsTitle">Search results</div></Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <Results items={this.state.newItems}/>
+                                        <Results items={this.props.foundBikes}/>
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button onClick={this.close} bsStyle="primary">Close</Button>
@@ -93,18 +80,29 @@ class SearchModal extends Component {
             </div>
         );
     }
-
-
 }
 
-export default SearchModal;
+const gatheredData = {
+    keyword: ''
+}
+
+const mapStateToProps = (state) => {
+    return {
+        keyword: state.searchBikeReducer.keyword,
+        foundBikes: state.searchBikeReducer.foundBikes
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        bikeSearch: () => dispatch(bikeSearch(gatheredData.keyword))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (SearchModal)
 
 
 class Results extends Component {
-
-    componentWillReceiveProps(someProps) {
-        console.log(someProps);
-    }
 
     render() {
         return <div>

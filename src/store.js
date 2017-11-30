@@ -10,6 +10,8 @@ import bikeListReducer from "./components/reducers/loadBikeList";
 import loadBikeListMiddleWare from "./components/middleware/loadBikeList";
 import loadTop5MiddleWare from "./components/middleware/loadTop5";
 import top5Reducer from "./components/reducers/loadTop5";
+import searchBikeReducer from "./components/reducers/searchBike";
+import searchBikesMiddleware from "./components/middleware/searchBike";
 
 const middleware = [
     thunk,
@@ -17,6 +19,7 @@ const middleware = [
     loadTop5MiddleWare,
     addBikeMiddleWare,
     deleteBikeMiddleWare,
+    searchBikesMiddleware,
     createLogger()];
 
 const store = createStore(
@@ -24,7 +27,8 @@ const store = createStore(
         bikeListReducer: bikeListReducer,
         top5Reducer: top5Reducer,
         bikesReducers: bikesReducers,
-        removableBikesReducers: removableBikesReducers
+        removableBikesReducers: removableBikesReducers,
+        searchBikeReducer: searchBikeReducer
 
     })
     , applyMiddleware(...middleware));
