@@ -32,7 +32,7 @@ class BikeList extends Component {
                     </thead>
                     <tbody>
                     {
-                        this.props.items.map((item, index) =>
+                        this.props.bikes.map((item, index) =>
                             <tr key={index}>
                                 <th scope="row">{item.productId}</th>
                                 <td>{item.name}</td>

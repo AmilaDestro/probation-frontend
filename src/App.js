@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import BikeList from "./components/BikeList";
 import Top5 from "./components/Top5";
-import {loadAllBikesRequest, loadTop5BikesRequest} from "./api/bikes";
+import {loadTop5BikesRequest} from "./api/bikes";
 import AddModal from "./modals/AddModal";
 import DeleteModal from "./modals/DeleteModal";
 import SearchModal2 from "./modals/SearchModal2";
 import EditModal from "./modals/EditModal";
+import {loadAllBikes} from "./components/actions/loadBikeList";
+import {connect} from "react-redux";
 
 
 class App extends Component {
@@ -17,24 +19,18 @@ class App extends Component {
             bestBikes: [],
         };
 
-        this.loadBikesList = this.loadBikesList.bind(this);
         this.loadTop5 = this.loadTop5.bind(this);
     }
 
-    componentDidMount() {
-        this.loadBikesList();
-        this.loadTop5();
+    componentWillReceiveProps(someProps) {
+        this.setState({
+            loadAllBikes: someProps
+        })
     }
 
-    loadBikesList() {
-        loadAllBikesRequest().then((bikes) => {
-            this.setState({
-                bikes: bikes
-            });
-            return this.state.bikes;
-        }).catch((error) => {
-            console.error(error);
-        });
+    componentDidMount() {
+        this.loadTop5();
+        this.props.loadAllBikes();
     }
 
     loadTop5() {
@@ -55,7 +51,7 @@ class App extends Component {
                 <SearchModal2/>
             </div>
             <div className="bikeDisplayTable">
-                <div id="bikeDisplayTableCell1"><BikeList items={this.state.bikes}/></div>
+                <div id="bikeDisplayTableCell1"><BikeList bikes={this.props.bikes}/></div>
                 <div id="bikeDisplayTableCell2"><Top5 items={this.state.bestBikes} className="top5Block"/></div>
             </div>
             <div className="buttonsMain">
@@ -69,4 +65,18 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+
+const mapStateToProps = (state) => {
+    return {
+        bikes: state.bikeListReducer.bikes
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+       loadAllBikes: () => dispatch(loadAllBikes())
+   };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (App)

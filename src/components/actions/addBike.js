@@ -1,5 +1,4 @@
 import * as types from './ActionTypes';
-import {createBikeRequest} from "../../api/bikes";
 
 
 export const bikeAdded = (bike) => {
